@@ -17,7 +17,7 @@ class Building(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     address = db.Column(db.String(120))
     space = db.Column(db.Integer())
-    floorscount = db.column(db.string(160))
+    floorscount = db.Column(db.String(160))
 
     def json(self):
         return {"id": self.id, "address": self.address, "space": self.space, "floorscount": self.floorscount}
