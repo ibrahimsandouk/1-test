@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify
 
-from models import Men, db
-
+from models import Men, db, Employee
 
 api = Blueprint('api', __name__,url_prefix='/api')
 index = Blueprint('index', __name__,url_prefix='/')
@@ -12,7 +11,9 @@ index = Blueprint('index', __name__,url_prefix='/')
 def get_mens():
     return jsonify([(lambda men : men.json())(men)for men in Men.query.all()])
 
-
+@api.route('/Employee')
+def get_Employee():
+    return jsonify([(lambda employee : employee.json())(employee)for employee in Employee.query.all()])
 
 @api.route('/Men/id/<int:men_id>')
 def get_id(men_id):
@@ -38,6 +39,7 @@ def get_index():
              <body>
               <h3>API:</h3>
               <a href =" ./api/Men">Men</a> 
+              <a href =" ./api/Employee">Employee</a>
               </body>
         </html>
              
