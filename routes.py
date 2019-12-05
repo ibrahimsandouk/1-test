@@ -4,6 +4,7 @@ from models import Men, db
 
 
 api = Blueprint('api', __name__,url_prefix='/api')
+index = Blueprint('index', __name__,url_prefix='/')
 
 
 
@@ -25,3 +26,19 @@ def putMan (man_name):
      db.session.add(Men(name=man_name))
      db.session.commit()
      return 'done'
+
+@index.route('/')
+@index.route('/index')
+def get_index():
+    return '''
+        <html>
+             <title>
+               MegaRestful web service
+             </title> 
+             <body>
+              <h3>API:</h3>
+              <a href =" ./api/Men">Men</a> 
+              </body>
+        </html>
+             
+           '''
