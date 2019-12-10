@@ -19,6 +19,8 @@ class Employee(db.Model):
     name = db.Column(db.String(120))
     position_id = db.Column(db.Integer ,ForeignKey('position.id'))
     position = relationship('Position')
+    building_id= db.Column(db.Integer ,ForeignKey('Building.id'))
+    building=relationship('Building')
 
     def json(self):
         return {"id": self.id, "name": self.name,"position":self.position.json()}
@@ -39,3 +41,4 @@ class Building(db.Model):
 
     def json(self):
         return {"id": self.id, "address": self.address,"name": self.name}
+
