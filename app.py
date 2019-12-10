@@ -1,6 +1,6 @@
 from flask import Flask
 
-from models import db, Men, Employee, Position
+from models import db, Men, Employee, Position, Building
 from routes import api, index
 
 app =Flask(__name__)
@@ -19,6 +19,9 @@ with app.app_context():
 
     db.session.add( Employee (name='Bob',position_id=manager.id))
     db.session.add( Employee (name='Rocky',position_id=developer.id))
+    db.session.commit()
+
+    db.session.add( Building (name='victory',address='lunasharskava'))
     db.session.commit()
 
 if __name__ == '__main__':

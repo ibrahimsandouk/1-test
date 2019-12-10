@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 
-from models import Men, db, Employee
+from models import Men, db, Employee, Building
 
 api = Blueprint('api', __name__,url_prefix='/api')
 index = Blueprint('index', __name__,url_prefix='/')
@@ -27,6 +27,10 @@ def putMan (man_name):
      db.session.add(Men(name=man_name))
      db.session.commit()
      return 'done'
+
+@api.route('/building')
+def get_building():
+    return jsonify([(lambda building : building.json())(building)for building in Building.query.all()])
 
 @index.route('/')
 @index.route('/index')
