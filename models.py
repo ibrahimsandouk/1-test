@@ -30,3 +30,12 @@ class Position(db.Model):
 
     def json(self):
         return {"id": self.id, "name": self.name}
+
+class Building(db.Model):
+    __tablename__ = 'Building'
+    id = db.Column(db.Integer, primary_key=True)
+    address = db.Column(db.String(120))
+
+
+    def json(self):
+        return {"id": self.id, "address": self.address}
